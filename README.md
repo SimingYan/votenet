@@ -74,7 +74,7 @@ While training you can check the `log_sunrgbd/log_train.txt` file on its progres
 
 To finetune with our pre-trained models:
 ```
-    python train.py --dataset sunrgbd --log_dir log_sunrgbd --num_point 40000 --no_height --pre_checkpoint_path=/path/to/pretrained/model --batch_size=8
+CUDA_VISIBLE_DEVICES=0 python train.py --dataset sunrgbd --log_dir log_sunrgbd --num_point 40000 --no_height --pre_checkpoint_path=/path/to/pretrained/model --batch_size=8
 ```
 To test the trained model with its checkpoint:
 
@@ -91,7 +91,7 @@ To train a VoteNet model on Scannet data (fused scan):
 
 To finetune with our pre-trained models:
 ```
-    python train.py --dataset scannet --log_dir log_scannet --num_point 40000 --no_height --pre_checkpoint_path=/path/to/pretrained/model --batch_size=8
+CUDA_VISIBLE_DEVICES=0 python train.py --dataset scannet --log_dir log_scannet --num_point 40000 --no_height --pre_checkpoint_path=/path/to/pretrained/model --batch_size=8
 ```
 
 To test the trained model with its checkpoint:
