@@ -67,11 +67,15 @@ For ScanNet, follow the [README](https://github.com/facebookresearch/votenet/blo
 
 To train a new VoteNet model on SUN RGB-D data (depth images):
 
-    CUDA_VISIBLE_DEVICES=0 python train.py --dataset sunrgbd --log_dir log_sunrgbd
+    CUDA_VISIBLE_DEVICES=0 python train.py --dataset sunrgbd --log_dir log_sunrgbd --num_point 40000
 
 You can use `CUDA_VISIBLE_DEVICES=0,1,2` to specify which GPU(s) to use. Without specifying CUDA devices, the training will use all the available GPUs and train with data parallel (Note that due to I/O load, training speedup is not linear to the nubmer of GPUs used). Run `python train.py -h` to see more training options (e.g. you can also set `--model boxnet` to train with the baseline BoxNet model).
 While training you can check the `log_sunrgbd/log_train.txt` file on its progress, or use the TensorBoard to see loss curves.
 
+To finetune with our pre-trained models:
+```
+    python train.py --dataset sunrgbd --log_dir log_sunrgbd --num_point 40000 --no_height --pre_checkpoint_path=/path/to/pretrained/model --batch_size=8
+```
 To test the trained model with its checkpoint:
 
     python eval.py --dataset sunrgbd --checkpoint_path log_sunrgbd/checkpoint.tar --dump_dir eval_sunrgbd --cluster_sampling seed_fps --use_3d_nms --use_cls_nms --per_class_proposal
@@ -84,6 +88,11 @@ Final evaluation results will be printed on screen and also written in the `log_
 To train a VoteNet model on Scannet data (fused scan):
 
     CUDA_VISIBLE_DEVICES=0 python train.py --dataset scannet --log_dir log_scannet --num_point 40000
+
+To finetune with our pre-trained models:
+```
+    python train.py --dataset scannet --log_dir log_scannet --num_point 40000 --no_height --pre_checkpoint_path=/path/to/pretrained/model --batch_size=8
+```
 
 To test the trained model with its checkpoint:
 
