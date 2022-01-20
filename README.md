@@ -4,9 +4,7 @@ Created by <a href="http://charlesrqi.com" target="_blank">Charles R. Qi</a>, <a
 ![teaser](https://github.com/facebookresearch/votenet/blob/master/doc/teaser.jpg)
 
 ## Introduction
-This repository is code release for our ICCV 2019 paper (arXiv report [here](https://arxiv.org/pdf/1904.09664.pdf)).
-
-Current 3D object detection methods are heavily influenced by 2D detectors. In order to leverage architectures in 2D detectors, they often convert 3D point clouds to regular grids (i.e., to voxel grids or to bird’s eye view images), or rely on detection in 2D images to propose 3D boxes. Few works have attempted to directly detect objects in point clouds. In this work, we return to first principles to construct a 3D detection pipeline for point cloud data and as generic as possible. However, due to the sparse nature of the data – samples from 2D manifolds in 3D space – we face a major challenge when directly predicting bounding box parameters from scene points: a 3D object centroid can be far from any surface point thus hard to regress accurately in one step. To address the challenge, we propose VoteNet, an end-to-end 3D object detection network based on a synergy of deep point set networks and Hough voting. Our model achieves state-of-the-art 3D detection on two large datasets of real 3D scans, ScanNet and SUN RGB-D with a simple design, compact model size and high efficiency. Remarkably, VoteNet outperforms previous methods by using purely geometric information without relying on color images.
+This repository is code release for ICCV 2019 paper (arXiv report [here](https://arxiv.org/pdf/1904.09664.pdf)) and the fine-tuning code for the paper [IAE](https://arxiv.org/pdf/2201.00785.pdf).
 
 In this repository, we provide VoteNet model implementation (with Pytorch) as well as data preparation, training and evaluation scripts on SUN RGB-D and ScanNet.
 
